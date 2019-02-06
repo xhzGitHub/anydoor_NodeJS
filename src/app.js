@@ -1,13 +1,14 @@
 const http = require('http');
+const fs = require('fs');
 const conf = require('./config/defaultConfig');
 const chalk = require('chalk');
 const path = require('path');
-const route = require('./helper/route')
+const route = require('./helper/route');
+
 
 const server = http.createServer((req,res) => {
     const {url} = req;  //获取相对路径
     const filePath = path.join(conf.root, url); // 将本地目录文件路径与相对路径进行拼接
-
     route(req, res, filePath);
 });
 
